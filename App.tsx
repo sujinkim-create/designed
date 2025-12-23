@@ -545,9 +545,9 @@ const App: React.FC = () => {
             <Footer />
           </>
         ) : (
-          <div className="flex h-[calc(100vh-5rem)] overflow-hidden bg-slate-50">
+          <div className="flex flex-col md:flex-row h-[calc(100vh-5rem)] overflow-hidden bg-slate-50">
             {/* Sidebar Navigation (Desktop) */}
-            <aside className="hidden md:flex flex-col w-60 bg-white border-r border-slate-200 p-5">
+            <aside className="hidden md:flex flex-col w-60 bg-white border-r border-slate-200 p-5 shrink-0">
               <div className="mb-6">
                 <p className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Learning Mode</p>
                 <nav className="space-y-1">
@@ -584,7 +584,7 @@ const App: React.FC = () => {
             </aside>
 
             {/* Mobile Nav Tabs */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-40 flex justify-around p-2 pb-safe">
+            <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 z-50 flex justify-around p-2 pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
               {[
                 { id: 'read', icon: BookOpen },
                 { id: 'vocab', icon: Cards },
@@ -596,15 +596,15 @@ const App: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id as TabView)}
-                  className={`p-3 rounded-xl transition-all ${activeTab === item.id ? 'text-white bg-indigo-500' : 'text-slate-400'}`}
+                  className={`p-3 rounded-xl transition-all ${activeTab === item.id ? 'text-white bg-indigo-500 shadow-md transform scale-105' : 'text-slate-400 hover:bg-slate-50'}`}
                 >
-                  <item.icon size={22} weight={activeTab === item.id ? "fill" : "regular"} />
+                  <item.icon size={24} weight={activeTab === item.id ? "fill" : "regular"} />
                 </button>
               ))}
             </div>
 
             {/* Content Area */}
-            <div className="flex-grow overflow-y-auto bg-slate-50 p-6 md:p-10 pb-24 md:pb-10">
+            <div className="flex-grow overflow-y-auto bg-slate-50 p-4 md:p-10 pb-24 md:pb-10 w-full">
               {/* Topic-based Article View */}
               {articleData && (
                 <div className="max-w-4xl mx-auto">

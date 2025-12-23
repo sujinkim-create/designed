@@ -64,7 +64,7 @@ const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onSelectTopic, onRe
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                     <div className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
@@ -106,7 +106,7 @@ const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onSelectTopic, onRe
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Weekly Goal */}
                     <div className="bg-white rounded-2xl p-6 border border-slate-200">
                         <div className="flex items-center justify-between mb-4">
