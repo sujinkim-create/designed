@@ -1,0 +1,117 @@
+/* Modern & Minimal Theme - LingoLeap AI */
+@import "tailwindcss";
+
+:root {
+  --background: 255 255 255;
+  --foreground: 15 23 42;
+  --card: 255 255 255;
+  --card-foreground: 15 23 42;
+  --popover: 255 255 255;
+  --popover-foreground: 15 23 42;
+  --primary: 99 102 241;
+  --primary-foreground: 255 255 255;
+  --primary-light: 129 140 248;
+  --primary-dark: 79 70 229;
+  --primary-ring: 99 102 241;
+  --secondary: 241 245 249;
+  --secondary-foreground: 51 65 85;
+  --muted: 248 250 252;
+  --muted-foreground: 100 116 139;
+  --accent: 241 245 249;
+  --accent-foreground: 15 23 42;
+  --destructive: 239 68 68;
+  --destructive-foreground: 255 255 255;
+  --border: 226 232 240;
+  --input: 226 232 240;
+  --ring: 99 102 241;
+  --radius: 0.75rem;
+}
+
+/* ---------------------------------------------------------
+   CHROME EXTENSION POPUP ZOOM FIX
+   --------------------------------------------------------- */
+html {
+  /* 팝업 창 자체의 크기를 고정 */
+  width: 800px !important;
+  height: 600px !important;
+  overflow: hidden !important;
+}
+
+body {
+  width: 1000px !important;
+  /* 내부 폭을 실제 웹처럼 1000px로 잡고 */
+  height: 750px !important;
+  zoom: 0.8 !important;
+  /* 0.8배 축소하여 800px 팝업에 맞춤 */
+  transform-origin: top left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-y: auto !important;
+  /* 세로 스크롤은 내부에서 가능하게 */
+}
+
+#root {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 제목이 여전히 크면 더 줄임 */
+h1 {
+  font-size: 3.5rem !important;
+  letter-spacing: -0.05em !important;
+}
+
+/* ---------------------------------------------------------
+   기존 애니메이션 복구
+   --------------------------------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Ticker Animation */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ticker-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 40s linear infinite;
+}
+
+.animate-ticker-reverse {
+  animation: ticker-reverse 40s linear infinite;
+}
+
+.hover\:pause:hover {
+  animation-play-state: paused;
+}

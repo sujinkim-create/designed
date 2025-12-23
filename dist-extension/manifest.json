@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "LingoLeap AI (Viewer)",
+  "version": "0.0.0",
+  "description": "LingoLeap AI를 Chrome Extension 팝업에서 표시합니다.",
+  "action": {
+    "default_title": "LingoLeap AI",
+    "default_popup": "index.html"
+  }
+}
+
