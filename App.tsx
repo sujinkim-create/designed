@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { generateArticles, generateStudyPack, recommendTopics, translateText } from './services/openaiService';
+import { generateArticles, generateStudyPack, recommendTopics, translateText } from './services/geminiService';
 import WordLookup from './components/WordLookup';
 import TrendingTicker from './components/TrendingTicker';
 import ArticleView from './components/ArticleView';
@@ -168,7 +168,7 @@ const App: React.FC = () => {
         setLearningHistory(localHistory);
       }
     } catch (e) {
-      setError("Failed to generate content. Please try again or check your API key.");
+      setError(e instanceof Error ? e.message : "Failed to generate content. Please try again or check your API key.");
       console.error(e);
     } finally {
       setIsGeneratingArticle(false);
