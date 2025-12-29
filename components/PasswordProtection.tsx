@@ -14,6 +14,16 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ onAuthenticated
         e.preventDefault();
         const sitePassword = import.meta.env.VITE_SITE_PASSWORD;
 
+        console.log("Environment check:", {
+            hasPassword: !!sitePassword,
+            passwordLength: sitePassword?.length
+        });
+
+        if (!sitePassword) {
+            alert("Configuration Error: VITE_SITE_PASSWORD is not set in this environment. Please check your GitHub Secrets and deploy.yml.");
+            return;
+        }
+
         if (password === sitePassword) {
             onAuthenticated();
         } else {
