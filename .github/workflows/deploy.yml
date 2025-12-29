@@ -36,6 +36,9 @@ jobs:
           VITE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           VITE_SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
+          # Fallback for Supabase keys if needed during build or runtime
+          VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

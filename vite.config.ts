@@ -11,13 +11,10 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       host: '0.0.0.0',
     },
-    build: mode === 'extension'
-      ? {
-        // Chrome "Load unpacked"로 바로 올릴 수 있게 dist 안에 manifest 포함
-        outDir: 'dist-extension',
-        emptyOutDir: true,
-      }
-      : undefined,
+    build: {
+      outDir: mode === 'extension' ? 'dist-extension' : 'dist',
+      emptyOutDir: true,
+    },
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
