@@ -55,54 +55,54 @@ const LearnerDashboard: React.FC<LearnerDashboardProps> = ({ onSelectTopic, onRe
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 py-8 px-4 md:px-8">
+        <div className="min-h-screen bg-slate-50 py-4 md:py-8 px-3 md:px-8">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-slate-900 mb-2">My Learning</h1>
-                    <p className="text-slate-500">Track your progress and continue where you left off</p>
+                <div className="mb-6 md:mb-8">
+                    <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">My Learning</h1>
+                    <p className="text-sm md:text-base text-slate-500">Track your progress and continue where you left off</p>
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <div className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
-                                <BookOpen size={20} weight="fill" className="text-indigo-500" />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+                    <div className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
+                        <div className="flex items-center gap-3 mb-2 md:mb-3">
+                            <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+                                <BookOpen size={16} weight="fill" className="text-indigo-500 md:w-5 md:h-5" />
                             </div>
                         </div>
-                        <p className="text-2xl font-bold text-slate-900">{stats.totalWordsLearned}</p>
-                        <p className="text-sm text-slate-500">Words Learned</p>
+                        <p className="text-xl md:text-2xl font-bold text-slate-900">{stats.totalWordsLearned}</p>
+                        <p className="text-xs md:text-sm text-slate-500">Words Learned</p>
                     </div>
 
-                    <div className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-orange-300 hover:shadow-md transition-all">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center">
-                                <Fire size={20} weight="fill" className="text-orange-500" />
+                    <div className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 hover:border-orange-300 hover:shadow-md transition-all">
+                        <div className="flex items-center gap-3 mb-2 md:mb-3">
+                            <div className="w-8 h-8 md:w-10 md:h-10 bg-orange-100 rounded-xl flex items-center justify-center">
+                                <Fire size={16} weight="fill" className="text-orange-500 md:w-5 md:h-5" />
                             </div>
                         </div>
-                        <p className="text-2xl font-bold text-slate-900">{stats.streakDays} days</p>
-                        <p className="text-sm text-slate-500">Current Streak</p>
+                        <p className="text-xl md:text-2xl font-bold text-slate-900">{stats.streakDays} days</p>
+                        <p className="text-xs md:text-sm text-slate-500">Streak</p>
                     </div>
 
-                    <div className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-green-300 hover:shadow-md transition-all">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-                                <Trophy size={20} weight="fill" className="text-green-500" />
+                    <div className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 hover:border-green-300 hover:shadow-md transition-all">
+                        <div className="flex items-center gap-3 mb-2 md:mb-3">
+                            <div className="w-8 h-8 md:w-10 md:h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                                <Trophy size={16} weight="fill" className="text-green-500 md:w-5 md:h-5" />
                             </div>
                         </div>
-                        <p className="text-2xl font-bold text-slate-900">{stats.totalQuizzes}</p>
-                        <p className="text-sm text-slate-500">Quizzes Completed</p>
+                        <p className="text-xl md:text-2xl font-bold text-slate-900">{stats.totalQuizzes}</p>
+                        <p className="text-xs md:text-sm text-slate-500">Quizzes</p>
                     </div>
 
-                    <div className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-purple-300 hover:shadow-md transition-all">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-                                <Brain size={20} weight="fill" className="text-purple-500" />
+                    <div className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200 hover:border-purple-300 hover:shadow-md transition-all">
+                        <div className="flex items-center gap-3 mb-2 md:mb-3">
+                            <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+                                <Brain size={16} weight="fill" className="text-purple-500 md:w-5 md:h-5" />
                             </div>
                         </div>
-                        <p className="text-2xl font-bold text-slate-900">{stats.totalTopics}</p>
-                        <p className="text-sm text-slate-500">Topics Explored</p>
+                        <p className="text-xl md:text-2xl font-bold text-slate-900">{stats.totalTopics}</p>
+                        <p className="text-xs md:text-sm text-slate-500">Topics</p>
                     </div>
                 </div>
 

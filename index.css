@@ -28,10 +28,10 @@
 }
 
 /* ---------------------------------------------------------
-   CHROME EXTENSION POPUP ZOOM FIX
+   CHROME EXTENSION POPUP ZOOM FIX (Disabled for Web App)
    --------------------------------------------------------- */
+/* 
 html {
-  /* 팝업 창 자체의 크기를 고정 */
   width: 800px !important;
   height: 600px !important;
   overflow: hidden !important;
@@ -39,10 +39,8 @@ html {
 
 body {
   width: 1000px !important;
-  /* 내부 폭을 실제 웹처럼 1000px로 잡고 */
   height: 750px !important;
   zoom: 0.8 !important;
-  /* 0.8배 축소하여 800px 팝업에 맞춤 */
   transform-origin: top left !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -50,19 +48,28 @@ body {
   color: rgb(var(--foreground));
   font-family: 'Inter', system-ui, sans-serif;
   overflow-y: auto !important;
-  /* 세로 스크롤은 내부에서 가능하게 */
+} 
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
 }
 
-/* 제목이 여전히 크면 더 줄임 */
-h1 {
+/* 제목이 여전히 크면 더 줄임 - Removed for better responsiveness control via classes */
+/* h1 {
   font-size: 3.5rem !important;
   letter-spacing: -0.05em !important;
-}
+} */
 
 /* ---------------------------------------------------------
    기존 애니메이션 복구

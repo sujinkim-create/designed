@@ -35,9 +35,9 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ onAuthenticated
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-            <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
-                <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Lock size={32} weight="fill" />
+            <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 md:p-12 text-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Lock size={24} weight="fill" className="md:w-8 md:h-8" />
                 </div>
 
                 <h1 className="text-2xl font-bold text-slate-900 mb-2">Protected Content</h1>
