@@ -17,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +34,7 @@ jobs:
         run: CI=false npm run build
         env:
           VITE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          VITE_SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+          VITE_SITE_PASSWORD: ${{ secrets.SITE_PASSWORD || secrets.VITE_SITE_PASSWORD }}
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
           # Fallback for Supabase keys if needed during build or runtime
           VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
