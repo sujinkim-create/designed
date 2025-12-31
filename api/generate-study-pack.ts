@@ -2,22 +2,31 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+  // CORS Handling
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-    const { text, level, excludeWords = [] } = req.body;
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
-    if (!text || !level) {
-        return res.status(400).json({ error: 'Text and level are required' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-    try {
-        const prompt = `
+  const { text, level, excludeWords = [] } = req.body;
+
+  if (!text || !level) {
+    return res.status(400).json({ error: 'Text and level are required' });
+  }
+
+  try {
+    const prompt = `
       Analyze the following English text (Level ${level}):
       "${text.substring(0, 5000)}"
 
@@ -90,21 +99,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     `;
 
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini",
-            messages: [
-                { role: "system", content: "You are a helpful English learning expert. You MUST respond with valid JSON." },
-                { role: "user", content: prompt }
-            ],
-            response_format: { type: "json_object" },
-        });
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: "You are a helpful English learning expert. You MUST respond with valid JSON." },
+        { role: "user", content: prompt }
+      ],
+      response_format: { type: "json_object" },
+    });
 
-        const content = completion.choices[0].message.content;
-        if (!content) throw new Error("Empty response from OpenAI");
+    const content = completion.choices[0].message.content;
+    if (!content) throw new Error("Empty response from OpenAI");
 
-        return res.status(200).json(JSON.parse(content));
-    } catch (error: any) {
-        console.error("Error generating study pack:", error);
-        return res.status(500).json({ error: error.message || 'Failed to generate study pack' });
-    }
+    return res.status(200).json(JSON.parse(content));
+  } catch (error: any) {
+    console.error("Error generating study pack:", error);
+    return res.status(500).json({ error: error.message || 'Failed to generate study pack' });
+  }
 }
