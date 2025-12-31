@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { lookupWord, translateText } from '../services/geminiService';
+import { lookupWord, translateText } from '../services/openaiService';
 import { Spinner } from '@phosphor-icons/react';
 
 interface WordLookupProps {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DiscussionItem } from '../types';
 import { ChatTeardropText, CaretDown, Lightbulb, Microphone, PenNib, PaperPlaneRight, Spinner, Robot } from '@phosphor-icons/react';
-import { evaluateDiscussionAnswer } from '../services/geminiService';
+import { evaluateDiscussionAnswer } from '../services/openaiService';
 import LessonLayout from './ui/LessonLayout';
 import SectionHeader from './ui/SectionHeader';
 import PracticeCard from './ui/PracticeCard';

@@ -1,6 +1,14 @@
 /* Modern & Minimal Theme - LingoLeap AI */
 @import "tailwindcss";
 
+body {
+  width: 100%;
+  min-width: 400px;
+  /* Force minimum width for extension */
+  min-height: 600px;
+  /* Force minimum height for extension */
+}
+
 :root {
   --background: 255 255 255;
   --foreground: 15 23 42;

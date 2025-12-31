@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CollocationItem } from '../types';
 import { Puzzle, BookOpen, Sparkles, Pencil, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
-import { evaluateSentence } from '../services/geminiService';
+import { evaluateSentence } from '../services/openaiService';
 import LessonLayout from './ui/LessonLayout';
 import SectionHeader from './ui/SectionHeader';
 import PracticeCard from './ui/PracticeCard';

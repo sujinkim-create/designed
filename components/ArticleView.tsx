@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArticleVariation } from '../types';
 import { Volume2, Square, Clock, ChartBar } from 'lucide-react';
 import { Spinner, Translate } from '@phosphor-icons/react';
-import { translateText } from '../services/geminiService';
+import { translateText } from '../services/openaiService';
 
 interface ArticleViewProps {
   articles: ArticleVariation[];
