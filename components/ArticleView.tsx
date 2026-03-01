@@ -1,19 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArticleVariation } from '../types';
-import { Volume2, Square, Clock, ChartBar } from 'lucide-react';
+import { Volume2, Square, Clock, ChartBar, Search, Copy, Check, ExternalLink } from 'lucide-react';
 import { Spinner, Translate } from '@phosphor-icons/react';
 import { translateText } from '../services/openaiService';
+import { GrammarQuiz } from './GrammarQuiz';
 
 interface ArticleViewProps {
   articles: ArticleVariation[];
   currentLevelIndex: number;
   onLevelChange: (index: number) => void;
+  searchQuery?: string;  // 신뢰도 높은 소스 검색용 쿼리
 }
 
-const ArticleView: React.FC<ArticleViewProps> = ({ articles, currentLevelIndex, onLevelChange }) => {
+const ArticleView: React.FC<ArticleViewProps> = ({ articles, currentLevelIndex, onLevelChange, searchQuery }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const currentArticle = articles[currentLevelIndex];
+
+  const handleCopyQuery = () => {
+    if (searchQuery) {
+      navigator.clipboard.writeText(searchQuery);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const handleOpenGoogle = () => {
+    if (searchQuery) {
+      const url = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+      window.open(url, '_blank');
+    }
+  };
 
   const handleSpeak = () => {
     if (isSpeaking) {
@@ -89,6 +107,37 @@ const ArticleView: React.FC<ArticleViewProps> = ({ articles, currentLevelIndex, 
             </button>
           </div>
 
+          {/* Search Query Button */}
+          {searchQuery && (
+            <div className="mb-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-indigo-700">
+                  <Search size={18} />
+                  <span className="font-medium text-sm">📚 원문 자료 검색</span>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleCopyQuery}
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-indigo-600 text-sm font-medium rounded-lg border border-indigo-200 hover:bg-indigo-50 transition-colors"
+                  >
+                    {copied ? <Check size={14} /> : <Copy size={14} />}
+                    {copied ? 'Copied!' : 'Copy Query'}
+                  </button>
+                  <button
+                    onClick={handleOpenGoogle}
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                  >
+                    <ExternalLink size={14} />
+                    Search Google
+                  </button>
+                </div>
+              </div>
+              <p className="mt-2 text-xs text-indigo-600/70 truncate" title={searchQuery}>
+                {searchQuery}
+              </p>
+            </div>
+          )}
+
           <div
             ref={contentRef}
             className="prose prose-lg prose-slate max-w-none relative select-text"
@@ -134,6 +183,10 @@ const ArticleView: React.FC<ArticleViewProps> = ({ articles, currentLevelIndex, 
                   </p>
                 );
               })}
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-slate-100 flex justify-center">
+            <GrammarQuiz articleText={currentArticle.content} />
           </div>
         </div>
       </div>

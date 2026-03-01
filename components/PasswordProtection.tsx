@@ -12,7 +12,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ onAuthenticated
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const sitePassword = import.meta.env.VITE_SITE_PASSWORD;
+        const sitePassword = process.env.NEXT_PUBLIC_SITE_PASSWORD;
 
         console.log("Environment check:", {
             hasPassword: !!sitePassword,
@@ -20,7 +20,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ onAuthenticated
         });
 
         if (!sitePassword) {
-            alert("Configuration Error: VITE_SITE_PASSWORD is not set in this environment. Please check your GitHub Secrets and deploy.yml.");
+            alert("Configuration Error: NEXT_PUBLIC_SITE_PASSWORD is not set in this environment. Please check your GitHub Secrets and deploy.yml.");
             return;
         }
 

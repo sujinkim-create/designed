@@ -44,19 +44,19 @@ const Flashcards: React.FC<FlashcardsProps> = ({ vocabulary }) => {
 
       {/* Card Container */}
       <div
-        className="relative w-full h-96 perspective-1000 cursor-pointer group"
+        className="relative w-full h-96 [perspective:1000px] cursor-pointer group"
         onClick={() => setIsFlipped(!isFlipped)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div
           className={`
-            relative w-full h-full duration-500 transform-style-3d transition-transform
-            ${isFlipped ? 'rotate-y-180' : ''}
+            relative w-full h-full duration-500 [transform-style:preserve-3d] transition-transform
+            ${isFlipped ? '[transform:rotateY(180deg)]' : ''}
           `}
         >
           {/* Front */}
-          <div className="absolute w-full h-full backface-hidden bg-white rounded-xl shadow-xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 hover:border-indigo-100 transition-colors">
+          <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded-xl shadow-xl border-2 border-slate-100 flex flex-col items-center justify-center p-8 hover:border-indigo-100 transition-colors">
             <span className="text-sm text-indigo-400 font-bold tracking-widest uppercase mb-4">Word</span>
             <h3 className="text-5xl font-bold text-slate-800 mb-4 text-center">{currentCard.word}</h3>
 
@@ -81,9 +81,14 @@ const Flashcards: React.FC<FlashcardsProps> = ({ vocabulary }) => {
           </div>
 
           {/* Back */}
-          <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-gradient-to-br from-indigo-500 to-fuchsia-600 rounded-xl shadow-xl flex flex-col items-center justify-center p-8 text-white">
+          <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-indigo-500 to-fuchsia-600 rounded-xl shadow-xl flex flex-col items-center justify-center p-8 text-white">
             <span className="text-xs text-indigo-100 font-bold tracking-widest uppercase mb-2">Definition</span>
-            <p className="text-xl text-center font-medium mb-6 leading-relaxed">
+
+            <p className="text-xl text-center font-bold mb-2">
+              {currentCard.koreanDefinition || '새 토픽을 생성해주세요'}
+            </p>
+
+            <p className="text-lg text-center font-medium mb-6 leading-relaxed opacity-90">
               {currentCard.definition}
             </p>
 

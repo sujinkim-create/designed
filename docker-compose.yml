@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  languagetool:
+    image: erikvl87/languagetool
+    container_name: languagetool-server
+    restart: unless-stopped
+    ports:
+      - "8010:8010"
+    environment:
+      - Java_Xms=512m
+      - Java_Xmx=1g
