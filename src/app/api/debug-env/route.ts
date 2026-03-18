@@ -1,5 +1,4 @@
 
-import { NextResponse } from 'next/server';
 
 export async function GET() {
     return NextResponse.json({
@@ -7,4 +6,6 @@ export async function GET() {
         hasNextPublicSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
         allKeys: Object.keys(process.env).filter(k => k.startsWith('NEXT_') || k.includes('KEY'))
     });
-}
+import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';

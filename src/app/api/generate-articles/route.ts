@@ -1,6 +1,3 @@
-import { NextResponse } from 'next/server';
-import { generateArticles } from '@/services/geminiService';
-import { ContentType } from '@/types';
 
 export async function POST(req: Request) {
     try {
@@ -27,4 +24,6 @@ export async function POST(req: Request) {
             { status: 500 }
         );
     }
-}
+import { ContentType } from '@/types';
+
+export const dynamic = 'force-dynamic';

@@ -1,7 +1,3 @@
-import { NextResponse } from 'next/server';
-import { extractKeySentences, generateDBBasedQuiz } from '@/services/geminiService';
-import { checkTextWithLanguageTool, checkGrammar } from '@/services/languageToolService';
-import { GrammarFocusData, GrammarFocusRule } from '@/types';
 
 export async function POST(req: Request) {
     try {
@@ -78,4 +74,6 @@ export async function POST(req: Request) {
             { status: 500 }
         );
     }
-}
+import { GrammarFocusData, GrammarFocusRule } from '@/types';
+
+export const dynamic = 'force-dynamic';

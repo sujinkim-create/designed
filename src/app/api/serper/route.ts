@@ -1,4 +1,3 @@
-import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.SERPER_API_KEY;
@@ -31,4 +30,6 @@ export async function POST(req: NextRequest) {
 
   const data = await response.json();
   return NextResponse.json(data);
-}
+import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = 'force-dynamic';
