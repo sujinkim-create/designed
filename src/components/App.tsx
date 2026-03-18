@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { generateArticles, generateStudyPack, recommendTopics, translateText } from '../services/geminiService';
+import { generateArticles, generateStudyPack, recommendTopics, translateText } from '../services/geminiClient';
 import WordLookup from './WordLookup';
 import TrendingTicker from './TrendingTicker';
 import ArticleView from './ArticleView';
