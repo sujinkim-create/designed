@@ -10,7 +10,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN NEXT_PUBLIC_SKIP_API_ROUTES=true npm run build || true
+RUN NEXT_PUBLIC_SUPABASE_URL=http://placeholder \
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=placeholder \
+    npm run build
 
 # Stage 3: Production image
 FROM node:20-alpine AS runner
