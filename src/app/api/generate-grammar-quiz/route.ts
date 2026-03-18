@@ -1,3 +1,8 @@
+import { NextResponse } from 'next/server';
+import { generateGrammarQuiz, extractGrammarTopics } from '@/services/geminiService';
+import { supabase } from '@/lib/supabase';
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
@@ -18,8 +23,8 @@ export async function POST(req: Request) {
         // 2. Search DB for these topics
         // We'll search for any rule that matches any of the topics (OR query)
         // Since Supabase 'in' expects exact matches, we might need 'ilike' for partial.
-        // But for simplicity/performance in this strict mode, let's try strict matching or simple 'or' filtering in code if dataset is small, 
-        // OR better: use textual search or multiple ilike. 
+        // But for simplicity/performance in this strict mode, let's try strict matching or simple 'or' filtering in code if dataset is small,
+        // OR better: use textual search or multiple ilike.
         // Let's assume 'pattern' column stores the rule name.
 
         // Construct filter: pattern.ilike.%Topic1%, pattern.ilike.%Topic2%...
@@ -66,6 +71,4 @@ export async function POST(req: Request) {
             { status: 500 }
         );
     }
-import { supabase } from '@/lib/supabase';
-
-export const dynamic = 'force-dynamic';
+}
