@@ -19,6 +19,7 @@ FROM --platform=linux/amd64 node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV HOSTNAME=0.0.0.0
 
 # Copy only what's needed to run
 COPY --from=builder /app/public ./public
