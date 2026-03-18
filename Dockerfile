@@ -29,4 +29,4 @@ COPY --from=builder /app/.next/static ./.next/static
 ENV PORT=8080
 EXPOSE 8080
 
-CMD ["node", "server.js"]
+CMD ["node", ".next/standalone/server.js"]
